@@ -90,7 +90,7 @@ class _InputPageState extends State<InputPage> {
                           style: kTextStyle,
                         )
                       ],
-                    )
+                    ),
                   ],
                 ),
               ),
