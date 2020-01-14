@@ -1,8 +1,10 @@
 import 'package:bmi_calculator/reusable_card.dart';
+import 'package:bmi_calculator/set_property_field.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+
 import 'constants.dart';
 import 'gender_card.dart';
 
@@ -17,6 +19,7 @@ class _InputPageState extends State<InputPage> {
   Gender activeGender;
   int height = 160;
   int weight = 60;
+  int age = 20;
 
   @override
   Widget build(BuildContext context) {
@@ -125,46 +128,40 @@ class _InputPageState extends State<InputPage> {
                   Expanded(
                     child: ReusableCard(
                       cardColor: kActiveCardColour,
-                      cardChild: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: <Widget>[
-                          Text(
-                            'WEIGHT',
-                            style: kTextStyle,
-                          ),
-                          Text(
-                            weight.toString(),
-                            style: kNumberTextStyle,
-                          ),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: <Widget>[
-                              RoundedButton(
-                                icon: Icons.add,
-                                onTap: () {
-                                  setState(() {
-                                    weight++;
-                                  });
-                                },
-                              ),
-                              SizedBox(width: 10.0),
-                              RoundedButton(
-                                icon: Icons.remove,
-                                onTap: () {
-                                  setState(() {
-                                    weight--;
-                                  });
-                                },
-                              ),
-                              // RoundedButton(Icons.remove, weight)
-                            ],
-                          ),
-                        ],
+                      cardChild: SetPropertyField(
+                        title: 'WEIGHT',
+                        titleValue: weight,
+                        onTapAdd: () {
+                          setState(() {
+                            weight++;
+                          });
+                        },
+                        onTapReduce: () {
+                          setState(() {
+                            weight--;
+                          });
+                        },
                       ),
                     ),
                   ),
                   Expanded(
-                    child: ReusableCard(cardColor: kActiveCardColour),
+                    child: ReusableCard(
+                      cardColor: kActiveCardColour,
+                      cardChild: SetPropertyField(
+                        title: 'AGE',
+                        titleValue: age,
+                        onTapAdd: () {
+                          setState(() {
+                            age++;
+                          });
+                        },
+                        onTapReduce: () {
+                          setState(() {
+                            age--;
+                          });
+                        },
+                      ),
+                    ),
                   ),
                 ],
               ),
@@ -179,27 +176,5 @@ class _InputPageState extends State<InputPage> {
         ),
       ),
     );
-  }
-}
-
-class RoundedButton extends StatelessWidget {
-  final IconData icon;
-  final Function onTap;
-
-  RoundedButton({@required this.icon, @required this.onTap});
-
-  @override
-  Widget build(BuildContext context) {
-    return RawMaterialButton(
-        shape: new CircleBorder(),
-        constraints: BoxConstraints.tightFor(height: 56.0, width: 56.0),
-        elevation: 10.0,
-        fillColor: Color(0xFF4C4F5E),
-        child: Icon(
-          this.icon,
-          size: 24.0,
-          color: Colors.white,
-        ),
-        onPressed: onTap);
   }
 }
