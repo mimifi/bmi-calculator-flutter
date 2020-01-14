@@ -1,6 +1,7 @@
 import 'package:bmi_calculator/reusable_card.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'constants.dart';
 import 'gender_card.dart';
@@ -14,7 +15,8 @@ class InputPage extends StatefulWidget {
 
 class _InputPageState extends State<InputPage> {
   Gender activeGender;
-  int height = 180;
+  int height = 160;
+  int weight = 60;
 
   @override
   Widget build(BuildContext context) {
@@ -121,7 +123,45 @@ class _InputPageState extends State<InputPage> {
               child: Row(
                 children: <Widget>[
                   Expanded(
-                    child: ReusableCard(cardColor: kActiveCardColour),
+                    child: ReusableCard(
+                      cardColor: kActiveCardColour,
+                      cardChild: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: <Widget>[
+                          Text(
+                            'WEIGHT',
+                            style: kTextStyle,
+                          ),
+                          Text(
+                            weight.toString(),
+                            style: kNumberTextStyle,
+                          ),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: <Widget>[
+                              RoundedButton(
+                                icon: Icons.add,
+                                onTap: () {
+                                  setState(() {
+                                    weight++;
+                                  });
+                                },
+                              ),
+                              SizedBox(width: 10.0),
+                              RoundedButton(
+                                icon: Icons.remove,
+                                onTap: () {
+                                  setState(() {
+                                    weight--;
+                                  });
+                                },
+                              ),
+                              // RoundedButton(Icons.remove, weight)
+                            ],
+                          ),
+                        ],
+                      ),
+                    ),
                   ),
                   Expanded(
                     child: ReusableCard(cardColor: kActiveCardColour),
@@ -138,9 +178,28 @@ class _InputPageState extends State<InputPage> {
           ],
         ),
       ),
-      /*floatingActionButton: FloatingActionButton(
-        child: Icon(Icons.add),
-      ),*/
     );
+  }
+}
+
+class RoundedButton extends StatelessWidget {
+  final IconData icon;
+  final Function onTap;
+
+  RoundedButton({@required this.icon, @required this.onTap});
+
+  @override
+  Widget build(BuildContext context) {
+    return RawMaterialButton(
+        shape: new CircleBorder(),
+        constraints: BoxConstraints.tightFor(height: 56.0, width: 56.0),
+        elevation: 10.0,
+        fillColor: Color(0xFF4C4F5E),
+        child: Icon(
+          this.icon,
+          size: 24.0,
+          color: Colors.white,
+        ),
+        onPressed: onTap);
   }
 }
