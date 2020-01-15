@@ -21,7 +21,7 @@ class GenderCard extends StatelessWidget {
         SizedBox(
           height: 15.0,
         ),
-        Text(genderText, style: kTextStyle)
+        Text(genderText, style: kPropertyTextStyle)
       ],
     );
   }

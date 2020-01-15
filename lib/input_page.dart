@@ -1,3 +1,5 @@
+import 'package:bmi_calculator/bottom_button.dart';
+import 'package:bmi_calculator/results_page.dart';
 import 'package:bmi_calculator/reusable_card.dart';
 import 'package:bmi_calculator/set_property_field.dart';
 import 'package:flutter/cupertino.dart';
@@ -77,7 +79,7 @@ class _InputPageState extends State<InputPage> {
                   children: <Widget>[
                     Text(
                       'HIGHT',
-                      style: kTextStyle,
+                      style: kPropertyTextStyle,
                     ),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
@@ -86,14 +88,14 @@ class _InputPageState extends State<InputPage> {
                       children: <Widget>[
                         Text(
                           height.toString(),
-                          style: kNumberTextStyle,
+                          style: kPropertyNumberStyle,
                         ),
                         SizedBox(
                           width: 10.0,
                         ),
                         Text(
                           'cm',
-                          style: kTextStyle,
+                          style: kPropertyTextStyle,
                         )
                       ],
                     ),
@@ -166,12 +168,17 @@ class _InputPageState extends State<InputPage> {
                 ],
               ),
             ),
-            Container(
-              color: kBottomCardColour,
-              margin: EdgeInsets.only(top: 10.0),
-              height: kBottomCardHeight,
-              width: double.infinity,
-            ),
+            BottomButton(
+              buttonName: 'CALCULATOR',
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => ResultsPage(),
+                  ),
+                );
+              },
+            )
           ],
         ),
       ),

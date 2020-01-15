@@ -5,13 +5,40 @@ const kInactiveCardColour = Color(0xFF111328);
 const kBottomCardColour = Color(0xFFEA1456);
 const double kBottomCardHeight = 80.0;
 
-const kTextStyle = TextStyle(
+const kPropertyTextStyle = TextStyle(
   fontSize: 18.0,
   color: Color(0xFF8E8E96),
 );
 
-const kNumberTextStyle = TextStyle(
+const kPropertyNumberStyle = TextStyle(
   fontSize: 50.0,
   fontWeight: FontWeight.w900,
   color: Colors.white,
+);
+
+const kLargeButtonTextStyle = TextStyle(
+  fontSize: 30.0,
+  fontWeight: FontWeight.bold,
+);
+
+const kTitleResultStyle = TextStyle(
+  fontSize: 45.0,
+  fontWeight: FontWeight.w700,
+);
+
+const kBMIResultText = TextStyle(
+  fontSize: 22.0,
+  fontWeight: FontWeight.bold,
+  letterSpacing: 2.0,
+  color: Color(0xFF20E67B),
+);
+
+const kBMIResultNumber = TextStyle(
+  fontSize: 100.0,
+  fontWeight: FontWeight.bold,
+);
+
+const kInterpretation = TextStyle(
+  fontSize: 22.0,
+  fontWeight: FontWeight.bold,
 );

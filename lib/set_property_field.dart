@@ -25,11 +25,11 @@ class SetPropertyField extends StatelessWidget {
       children: <Widget>[
         Text(
           title,
-          style: kTextStyle,
+          style: kPropertyTextStyle,
         ),
         Text(
           titleValue.toString(),
-          style: kNumberTextStyle,
+          style: kPropertyNumberStyle,
         ),
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
