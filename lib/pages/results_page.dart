@@ -1,9 +1,17 @@
-import 'package:bmi_calculator/bottom_button.dart';
 import 'package:bmi_calculator/constants.dart';
-import 'package:bmi_calculator/reusable_card.dart';
+import 'package:bmi_calculator/widgets/bottom_button.dart';
+import 'package:bmi_calculator/widgets/reusable_card.dart';
 import 'package:flutter/material.dart';
 
 class ResultsPage extends StatelessWidget {
+  ResultsPage(
+      {@required this.bmiResultText,
+      @required this.bmiNumber,
+      @required this.interpretation});
+
+  final String bmiResultText;
+  final String bmiNumber;
+  final String interpretation;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -28,14 +36,14 @@ class ResultsPage extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: <Widget>[
                           Text(
-                            'NORMAL',
+                            bmiResultText,
                             style: kBMIResultText,
                           ),
                           SizedBox(
                             height: 30.0,
                           ),
                           Text(
-                            '22.0',
+                            bmiNumber,
                             style: kBMIResultNumber,
                           ),
                           SizedBox(
@@ -57,10 +65,13 @@ class ResultsPage extends StatelessWidget {
                       flex: 4,
                     ),
                     Expanded(
-                      child: Text(
-                        'You have a normal body weight. Great Job!',
-                        style: kInterpretation,
-                        textAlign: TextAlign.center,
+                      child: Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Text(
+                          interpretation,
+                          style: kInterpretation,
+                          textAlign: TextAlign.center,
+                        ),
                       ),
                     )
                   ],
@@ -68,7 +79,7 @@ class ResultsPage extends StatelessWidget {
               ),
             ),
             BottomButton(
-              buttonName: 'RE-CALCULATOR',
+              buttonName: 'RE-CALCULATE',
               onTap: () {
                 Navigator.pop(context);
               },

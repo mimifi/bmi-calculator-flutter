@@ -11,18 +11,18 @@ const kPropertyTextStyle = TextStyle(
 );
 
 const kPropertyNumberStyle = TextStyle(
-  fontSize: 50.0,
-  fontWeight: FontWeight.w900,
+  fontSize: 40.0,
+  fontWeight: FontWeight.w700,
   color: Colors.white,
 );
 
 const kLargeButtonTextStyle = TextStyle(
-  fontSize: 30.0,
+  fontSize: 24.0,
   fontWeight: FontWeight.bold,
 );
 
 const kTitleResultStyle = TextStyle(
-  fontSize: 45.0,
+  fontSize: 40.0,
   fontWeight: FontWeight.w700,
 );
 
@@ -34,7 +34,7 @@ const kBMIResultText = TextStyle(
 );
 
 const kBMIResultNumber = TextStyle(
-  fontSize: 100.0,
+  fontSize: 80.0,
   fontWeight: FontWeight.bold,
 );
 
